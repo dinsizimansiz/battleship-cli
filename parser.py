@@ -19,6 +19,10 @@ def parse(line,urlRoot = "localhost:5050/"):
                 objProperties["url"] += "playertable?username="
             elif words[1] == "opponent":
                 objProperties["url"] += "opponentguesses?username="
+            elif words[1] == "turn":
+                objProperties["url"] += "isturn?username="
+            elif words[1] == "started":
+                objProperties["url"] += "started?username="
 
         else:
             objProperties["method"] = "post"
