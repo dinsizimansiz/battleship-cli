@@ -27,6 +27,7 @@ while True:
     commandLine = input()
     if commandLine == "help":
         printHelp()
+        continue
     try:
         obj = parse(commandLine,urlRoot=APP_URL)
         obj["url"] += username
