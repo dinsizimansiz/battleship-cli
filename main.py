@@ -1,5 +1,5 @@
 from re import match
-from parser import parse
+from parser import parse,BadCommand
 from threading import Thread
 from communicate import communicate
 
@@ -16,10 +16,15 @@ while True:
         username = _match.group()
         break
 
+print(" --- WELCOME TO BATTLESHIP ---")
 
 while True:
 
-    commandLine = input("<battleship>  ")
-    obj = parse(commandLine,urlRoot=APP_URL)
-    obj["url"].format(username)
-    Thread(target=communicate,args=(obj["method"],obj["url"])).start()
+    commandLine = input()
+    try:
+        obj = parse(commandLine,urlRoot=APP_URL)
+        obj["url"] += username
+        Thread(target=communicate,args=(obj["method"],obj["url"])).start()
+    except BadCommand as err:
+        print("Bad Command : {}".format(err))
+
