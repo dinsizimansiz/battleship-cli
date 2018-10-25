@@ -14,7 +14,7 @@ def communicate(method:str,url:str) -> None:
         if _json.get("payload",None) is not None:
             print(colored(str(_json["payload"]),"cyan"),flush=True)
 
-        if _json.get("success",None) is not None:
+        if _json.get("success",None) not in [None,True]:
             print(colored(str(_json["success"]),"yellow"),flush=True)
     except Exception:
         # In undefined request express sends an html. That causes an error.
@@ -45,10 +45,10 @@ def statusPoll(username, urlRoot="http://127.0.0.1:5050/", sleepTime = 0.25) :
 
     except Exception:
         pass
-    finally:
 
-        while True:
-            status = _poll(status)
+    finally:
+        statusPoll(username,urlRoot,sleepTime)
+
 
 def turnPoll(username, urlRoot="http://127.0.0.1:5050/", sleepTime = 0.25):
 
@@ -74,8 +74,7 @@ def turnPoll(username, urlRoot="http://127.0.0.1:5050/", sleepTime = 0.25):
         pass
     finally:
 
-        while True:
-            isTurn = _poll(isTurn)
+        turnPoll(username,urlRoot,sleepTime)
 
 def gameStartedPoll(username, urlRoot="http://127.0.0.1:5050/", sleepTime = 0.25):
 
@@ -101,6 +100,4 @@ def gameStartedPoll(username, urlRoot="http://127.0.0.1:5050/", sleepTime = 0.25
         pass
     finally :
 
-        while True:
-
-            gameStarted = _poll(gameStarted)
+        gameStartedPoll(username,urlRoot,sleepTime)
