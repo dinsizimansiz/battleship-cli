@@ -16,9 +16,9 @@ while True:
         username = _match.group()
         break
 
-Thread(target=statusPoll, args=(username, APP_URL), kwargs={}).start()
-Thread(target=turnPoll, args=(username, APP_URL), kwargs={}).start()
-Thread(target=gameStartedPoll, args=(username, APP_URL), kwargs={}).start()
+Thread(target=statusPoll, args=(username, APP_URL), kwargs={"sleepTime":0.75}).start()
+Thread(target=turnPoll, args=(username, APP_URL), kwargs={"sleepTime":0.75}).start()
+Thread(target=gameStartedPoll, args=(username, APP_URL), kwargs={"sleepTime":0.75}).start()
 
 print(" --- WELCOME TO BATTLESHIP ---")
 
