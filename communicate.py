@@ -14,7 +14,7 @@ def communicate(method:str,url:str) -> None:
         if _json.get("payload",None) is not None:
             print(colored(str(_json["payload"]),"cyan"),flush=True)
 
-        if _json.get("success",None) not in [None,True]:
+        if _json.get("success",None) is not None:
             print(colored(str(_json["success"]),"yellow"),flush=True)
     except Exception:
         # In undefined request express sends an html. That causes an error.
