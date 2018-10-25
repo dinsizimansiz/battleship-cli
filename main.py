@@ -1,5 +1,5 @@
 from re import match
-from parser import parse,BadCommand
+from parser import parse,BadCommand,printHelp
 from threading import Thread
 from communicate import communicate,statusPoll,turnPoll,gameStartedPoll
 
@@ -25,6 +25,8 @@ print(" --- WELCOME TO BATTLESHIP ---")
 while True:
 
     commandLine = input()
+    if commandLine == "help":
+        printHelp()
     try:
         obj = parse(commandLine,urlRoot=APP_URL)
         obj["url"] += username

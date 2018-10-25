@@ -15,8 +15,6 @@ def parse(line,urlRoot = "localhost:5050/"):
                 objProperties["url"] += "freeships?username="
             elif words[1] == "placedships":
                 objProperties["url"] += "placedships?username="
-            elif words[1] == "enemytable":
-                objProperties["url"] += "playertable?username="
             elif words[1] == "opponent":
                 objProperties["url"] += "opponentguesses?username="
             elif words[1] == "turn":
@@ -50,3 +48,49 @@ def parse(line,urlRoot = "localhost:5050/"):
 
 class BadCommand(Exception):
     pass
+
+def printHelp():
+
+    print("get playertable")
+    print("\tGets your current playertable.")
+    print("get enemytable")
+    print("\tGets your current enemytable.")
+    print("get opponent")
+    print("\tGets your opponents moves.")
+    print("get status")
+    print("\tGets current status.0 offline,1 in queue,2 in match.")
+    print("get freeships")
+    print("\tGets unplaced ships to board with name.")
+    print("get placedships")
+    print("\tGets placed ships to board with name.")
+    print("get turn")
+    print("\tGets whether your turn or not.")
+    print("get started")
+    print("\tGets whether game you're in started or not.")
+    print("makemove <x:int> <y:int>")
+    print("\tMakes move to your enemy table.")
+    print("placeship <shipname:str> <x:int> <y:int> <direction:str>")
+    print("\tPlaced ship to your playertable.")
+    print("ready")
+    print("\tSets you ready if you placed all ships.")
+    print("unready")
+    print("\tSets you unready")
+    print("removeship <shipname:str>")
+    print("\tRemoves ship you want from your playertable.")
+    print("enqueue")
+    print("\tAdds to you matchmaking queue.")
+    print("dequeue")
+    print("\tGets you out from matchmaking queue.",end="\n\n")
+    print("Shipname   : CellCharacter : ShipSize")
+    print("--------     -------------   --------")
+    print("carrier    : 11111         : 5")
+    print("battleship : 2222          : 4")
+    print("submarine  : 333           : 3")
+    print("cruiser    : 444           : 3")
+    print("destroyer  : 55            : 2",end = "\n\n")
+    print("DirectionName : Orientation")
+    print("-------------   -----------")
+    print("north         : UP")
+    print("east          : RIGHT")
+    print("south         : DOWN")
+    print("west          : LEFT")
