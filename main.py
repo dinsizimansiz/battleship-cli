@@ -6,7 +6,7 @@ from communicate import communicate,statusPoll,turnPoll,gameStartedPoll
 ADDRESS = "127.0.0.1"
 APP_URL = "http://{}:5050/".format(ADDRESS)
 username = None
-usernamePattern = r"[A-Za-z0-9]{6,20}"
+usernamePattern = r"[A-Za-z0-9]{2,20}"
 
 while True:
 
